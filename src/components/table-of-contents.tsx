@@ -15,13 +15,13 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Находим все заголовки
+      // Find all the headings
       const headings = Array.from(document.querySelectorAll('h1[id], h2[id], h3[id]'))
 
       for (const heading of headings) {
         const rect = heading.getBoundingClientRect()
 
-        // Если заголовок находится в верхней части экрана
+        // If the heading is in the top third of the screen
         if (rect.top >= 0 && rect.top <= window.innerHeight / 3) {
           setActiveId(heading.id)
           break

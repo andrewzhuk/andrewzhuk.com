@@ -17,27 +17,6 @@ interface Item {
   }
 }
 
-// export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions }) => {
-//   const { createTypes } = actions
-//   const typeDefs = `
-//     scalar Date
-
-//     type Mdx implements Node {
-//       frontmatter: Frontmatter
-//     }
-
-//     type Frontmatter {
-//       title: String!
-//       description: String
-//       date: Date
-//       tags: [String!]
-//       slug: String!
-//       lang: String!
-//     }
-//   `
-//   createTypes(typeDefs)
-// }
-
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -77,7 +56,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const posts = blogResult.data?.allMdx.edges || []
 
   if (posts.length > 0) {
-    // Сначала сгруппируем посты по языку
+    // Group posts by language
     const postsByLang: { [key: string]: typeof posts } = {}
     posts.forEach(post => {
       const lang = post.node.frontmatter.lang
@@ -87,14 +66,14 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       postsByLang[lang].push(post)
     })
 
-    // Теперь создаем страницы для каждого языка отдельно
+    // Create pages for each language
     Object.entries(postsByLang).forEach(([lang, langPosts]) => {
       langPosts.forEach((post, index) => {
-        // Находим предыдущий и следующий посты на том же языке
+        // Find previous and next posts on the same language
         const previousPostId = index === 0 ? null : langPosts[index - 1].node.id
         const nextPostId = index === langPosts.length - 1 ? null : langPosts[index + 1].node.id
 
-        // Находим все языковые версии текущего поста
+        // Find all translations of the current post
         const translations = posts.filter(p => 
           p.node.frontmatter.slug === post.node.frontmatter.slug && 
           p.node.frontmatter.lang !== post.node.frontmatter.lang
@@ -103,7 +82,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
           slug: t.node.frontmatter.slug
         }))
 
-        // Создаем страницу с учетом языка
+        // Create page for the current language
         const pagePath = post.node.frontmatter.lang === 'en' 
           ? `/posts/${post.node.frontmatter.slug}`
           : `/${post.node.frontmatter.lang}/posts/${post.node.frontmatter.slug}`
@@ -162,7 +141,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       const previousProjectId = index === 0 ? null : projects[index - 1].node.id
       const nextProjectId = index === projects.length - 1 ? null : projects[index + 1].node.id
 
-      // // Находим все языковые версии текущего проекта
+      // Find all translations of the current project
       // const translations = projects.filter(p => 
       //   p.node.frontmatter.slug === project.node.frontmatter.slug && 
       //   p.node.frontmatter.lang !== project.node.frontmatter.lang
@@ -171,14 +150,13 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       //   slug: t.node.frontmatter.slug
       // }))
 
-      // // Создаем страницу с учетом языка
+      // Create page for the current language
       // const pagePath = project.node.frontmatter.lang === 'en' 
       //   ? `/projects/${project.node.frontmatter.slug}`
       //   : `/${project.node.frontmatter.lang}/projects/${project.node.frontmatter.slug}`
 
       createPage({
         path: `/projects/${project.node.frontmatter.slug}`,
-        // path: pagePath,
         component: `${projectTemplate}?__contentFilePath=${project.node.internal.contentFilePath}`,
         context: {
           id: project.node.id,

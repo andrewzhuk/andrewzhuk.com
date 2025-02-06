@@ -1,4 +1,4 @@
-/* Минимальный reset */
+/* reset */
 *,
 *::before,
 *::after {
@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Дополнительные сбросы */
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -239,10 +238,10 @@ svg.icon {
 .hero .animation {
   position: relative;
   width: 80vw;
-  min-width: 320px; /* Минимальная ширина */
-  max-width: 1200px; /* Максимальная ширина */
-  height: 350px; /* Используем viewport height */
-  margin: 0 auto; /* Центрирование */
+  min-width: 320px;
+  max-width: 1200px;
+  height: 350px;
+  margin: 0 auto;
 }
 
 .hero .animation .wave {

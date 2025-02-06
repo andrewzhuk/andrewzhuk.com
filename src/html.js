@@ -10,6 +10,11 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover"
         />
+         <link key="favicon" rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link key="favicon-svg" rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+    <link key="favicon-ico" rel="shortcut icon" href="/images/favicon/favicon.ico" />
+    <link key="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+    <link key="site-webmanifest" rel="manifest" href="/images/favicon/site.webmanifest" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

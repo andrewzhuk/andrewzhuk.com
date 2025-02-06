@@ -6,14 +6,14 @@ const HtmlAttributes = {
 }
 
 const BodyAttributes = {
-  className: 'dark',
+  className: 'dark'
 }
 
 const PreBodyComponents = [
   <GoogleTagManager key="google-tag-manager" />
 ]
 
-const HeadComponents = [
+const HeadComponents = [  
   // <meta
   //   key="viewport"
   //   name="viewport"
@@ -25,14 +25,13 @@ export const onRenderBody = ({
   setHeadComponents,
   setHtmlAttributes,
   setBodyAttributes,
-  setPreBodyComponents,
+  setPreBodyComponents
 }) => {
   setHeadComponents(HeadComponents)
   setHtmlAttributes(HtmlAttributes)
   setBodyAttributes(BodyAttributes)
   setPreBodyComponents(PreBodyComponents)
 }
-
 
 // // Wraps every page in a component
 // exports.wrapPageElement = ({ element, props }) => {

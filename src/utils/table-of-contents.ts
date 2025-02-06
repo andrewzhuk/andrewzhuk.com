@@ -6,10 +6,10 @@ interface TableItem {
 
 const cleanTitle = (text: string) => {
   return text
-    .replace(/\*\*(.*?)\*\*/g, '$1') // Убираем жирный текст **...**
-    .replace(/__(.*?)__/g, '$1') // Убираем альтернативный жирный текст __...__
-    .replace(/`(.*?)`/g, '$1') // Убираем инлайновый код `...`
-    .replace(/:\w+:/g, '') // Убираем эмодзи в формате :smile:
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/__(.*?)__/g, '$1')
+    .replace(/`(.*?)`/g, '$1')
+    .replace(/:\w+:/g, '')
     .trim()
 }
 
@@ -24,7 +24,7 @@ const generateTableOfContents = (mdxBody: string): TableItem[] => {
   let currentH2: TableItem | null = null
 
   matches.forEach((match) => {
-    const level = match[1].length // Количество `#` указывает уровень заголовка
+    const level = match[1].length
     const title = cleanTitle(match[2])
     const id = title.toLowerCase().replace(/\s+/g, '-')
     const item: TableItem = { url: `#${id}`, title }
