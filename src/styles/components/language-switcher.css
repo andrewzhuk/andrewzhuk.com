@@ -1,0 +1,23 @@
+.language-switcher {
+  display: flex;
+  margin: 1rem 0;
+  flex-direction: column;
+}
+
+.language-switcher .label {
+  display: flex;
+  color: var(--text-color-secondary);
+}
+
+.language-link {
+  padding: 0.2rem 0.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--bg-secondary);
+}
+
+.language-link:hover {
+  color: var(--text-color-secondary);
+  text-decoration: underline;
+}

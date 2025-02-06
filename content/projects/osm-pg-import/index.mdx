@@ -1,0 +1,21 @@
+---
+title: "OSM PG Import"
+description: "OSM Data Integration Tool is a tool for automated downloading and updating of OpenStreetMap (OSM) data into a local PostgreSQL database. The project utilizes osm2pgsql and Lua scripts to transform OSM data, ensuring the accuracy and uniqueness of geographic information about features like streets and roads."
+technologies: ["osm2pgsql", "PostgreSQL/PostGIS", "Lua"]
+github: "https://github.com/andrewzhuk/osm-pg-import"
+thumbnail: "thumbnail.jpg"
+slug: "osm-pg-import"
+opensource: true
+position: 2
+---
+
+# OSM PG Import
+
+OSM Data Integration Tool is a tool for automated downloading and updating of OpenStreetMap (OSM) data into a local PostgreSQL database. The project utilizes osm2pgsql and Lua scripts to transform OSM data, ensuring the accuracy and uniqueness of geographic information about features like streets and roads.
+
+## Key Features
+
+- **OSM Data Import:** The tool automatically loads data from OSM PBF files into a PostgreSQL database using osm2pgsql.
+- **Data Processing and Transformation:** Data is filtered and transformed using Lua scripts, including the removal of unnecessary elements and normalization of street names.
+- **Uniqueness Management:** A system of unique identifiers is used to prevent data duplication during reloads.
+- **Automation of Updates:** Bash scripts provide automation of the data loading sequence and subsequent SQL queries for updating and maintaining the data in a current state.

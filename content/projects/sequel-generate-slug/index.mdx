@@ -1,0 +1,69 @@
+---
+title: "Sequel Generate Slug"
+description: "Sequel Generate Slug is a plugin automatically generates a URL-friendly slug for your Sequel model instances. The plugin supports multi-language slugs, so you can use any language to create slugs for your models. Additionally, if you update the title column of a model instance, the plugin will automatically generate a new slug based on the updated title."
+technologies: ["Ruby", "Sequel"]
+github: "https://github.com/andrewzhuk/sequel-generate-slug"
+thumbnail: "thumbnail.jpg"
+slug: "sequel-generate-slug"
+opensource: true
+position: 6
+---
+
+# Sequel Generate Slug: Multilingual URL Slug Generation for Your Sequel Models
+
+## **Hello fellow Rubyists! 🚀**
+
+Today I’m excited to share my new open-source contribution to the Ruby ecosystem: the Sequel Generate Slug plugin. It solves a common yet critical task—automatically generating human-readable URL slugs for your Sequel models—with a focus on multilingual support and uniqueness.
+
+### Why Did I Create This Plugin?
+
+As a Sequel enthusiast and Ruby lover, I’ve always found a lack of simple, flexible solutions for generating slugs that support Cyrillic, hieroglyphs, and other languages. Existing options either required awkward workarounds or were limited to Latin characters. I wanted to build a tool that:
+
+- Works out of the box with any language 🌍
+- Integrates into Sequel models with just one line of code
+- Remains lightweight and transparent in its behavior
+
+### Key Features
+
+```ruby
+class Post < Sequel::Model  
+  plugin :generate_slug, source: :title, destination: :slug  
+end
+```
+
+- **Automation Without Magic**
+Simply specify a source column (e.g., title), and the plugin generates a slug into the target field (:slug by default). When the title updates, the slug refreshes automatically.
+
+- **Multilingual by Design**
+Use any language—the plugin handles Unicode seamlessly, converting characters into URL-friendly formats:
+
+```ruby
+post.title = "Доброго вечора ми з України" # => slug: "dobrogho-viechora-mi-z-ukrayini"  
+post.title = "A quoi ressemble le texte en français avec ce plugin?" # => slug: "a-quoi-ressemble-le-texte-en-francais-avec-ce-plugin"  
+```
+
+- **Guaranteed Uniqueness**
+If a slug conflicts, it’s appended with a numeric suffix (e.g., post-title-2). Uniqueness checks can even scope to additional columns (e.g., identifier) of the post.
+
+<Tip type="info">
+Take a look at the length of the full URL for SEO purposes is 100 - 120 characters.
+</Tip>
+
+```ruby
+post = Post.create(title: 'Hello World', identifier: 'abcdef')
+post.slug # => 'hello-world'
+
+post = Post.create(title: 'Hello World', identifier: 'abcdef')
+post.slug # => 'hello-world-abcdef'
+
+post = Post.create(title: 'Hello World', identifier: 'abcdef')
+post.slug # => 'hello-world-abcdef-1'
+```
+
+### Who Is This For?
+
+- Multilingual projects (blogs, e-commerce, SaaS platforms)
+- Sequel-based microservices (Roda, Sinatra, or standalone)
+- Developers who value simplicity and clean code
+
+The plugin is already powering several production projects and is available on GitHub under the MIT license. I welcome your pull requests, bug reports, and ideas!

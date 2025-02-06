@@ -1,0 +1,48 @@
+---
+title: "Remixicons"
+description: "Open-source neutral-style system symbols elaborately crafted for frontend developers."
+technologies: ["React", "TypeScript", "Vue"]
+github: "https://github.com/andrewzhuk/remixicons"
+thumbnail: "thumbnail.jpg"
+slug: "remixicons"
+opensource: true
+position: 4
+---
+
+# Remixicons: Design Elements for Impeccable Interfaces
+
+In modern interface design, icons are not just navigational elements but a key component of visual communication. While working on projects that required both aesthetics and functionality, I came across the Remix Icon project by a designer from China, appreciating its balanced minimalism and versatility. However, manually adapting the icons for different platforms slowed down the process, which led me to create my own solution.
+
+My implementation is an optimized component library designed for frontend developers. Its key features include:
+
+- **Two-Click Integration**: Ready-to-use React and Vue components.
+- **Complete Control**: Dynamic customization of sizes, colors (including gradients), and styles via props.
+
+**Result**:
+
+The library reduced the time needed to integrate icons into projects by 70%, becoming a standard in my workflow.
+
+You can try it out yourself:
+
+## Installation
+
+```bash
+yarn add --dev @remixicons/react
+```
+
+## Usage
+
+```javascript
+import { BrushIcon } from '@remixicons/react/fill'
+
+function MyComponent() {
+  return (
+    <div>
+      <BrushIcon className="h-5 w-5 fill-blue-500"/>
+      <p>...</p>
+    </div>
+  )
+}
+
+export default MyComponent
+```
