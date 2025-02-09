@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import type { PostNode, ProjectNode } from '../types'
+import type { PostNode, ProjectNode } from '../../types'
+import './styles.css'
 
 export type ItemProps = { type: 'post'; node: PostNode } | { type: 'project'; node: ProjectNode }
 

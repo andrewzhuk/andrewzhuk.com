@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { InformationIcon } from '@remixicons/react/line'
 import React, { type ReactNode } from 'react'
+import './styles.css'
 
 type TipType = {
   type: 'info' | 'warning' | 'success' | 'error'

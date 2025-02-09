@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 interface PageHeadProps {
   title?: string
@@ -10,13 +9,6 @@ interface PageHeadProps {
 }
 
 export const PageHead = ({ title, description, image, pathname, children }: PageHeadProps) => {
-  // const siteMetadata = useSiteMetadata()
-
-  // const seo = {
-  //   title: title || 'Andrew Zhuk',
-  //   description: description || 'Personal website of Andrew Zhuk - Software Engineer',
-  //   url: `https://andrewzhuk.com${pathname || ''}`
-  // }
 
   return (
     <>
@@ -35,7 +27,6 @@ export const PageHead = ({ title, description, image, pathname, children }: Page
       <meta name="twitter:creator" content="@imandrewzhuk" />
       <meta name="twitter:image" content={image || ''} />
 
-      <link rel="canonical" href={`https://andrewzhuk.com${pathname || ''}`} />
       {children}
     </>
   )

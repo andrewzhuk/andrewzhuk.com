@@ -1,0 +1,290 @@
+.item .item-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 164.5px;
+}
+
+.item .item-wrapper.game {
+  min-width: 137px;
+}
+
+.item .item-wrapper.user {
+  min-width: 137px;
+}
+
+.item .item-wrapper.offer {
+  max-width: 336.5px;
+}
+
+.item .item-wrapper.offer .item-card-body {
+  max-width: 336.5px !important;
+}
+
+.item .item-block {
+  font-family: inherit;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.item .item-block .item-card {
+  font-family: inherit;
+  border-radius: 8px;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.item .item-block .item-card:hover {
+  background-color: #2f2f2f;
+}
+
+.dark .item .item-block .item-card {
+  background-color: #262626;
+}
+
+.dark .item .item-block .item-card:hover {
+  background-color: #2f2f2f;
+}
+
+.item .item-block .item-card .item-card-link {
+  min-height: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  padding-bottom: 0;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  flex-basis: auto;
+  position: relative;
+  margin-top: 0;
+  width: 100%;
+  padding-top: 0;
+  display: flex;
+  text-align: inherit;
+  min-width: 0;
+  margin-left: 0;
+  align-items: stretch;
+  background-color: transparent;
+  touch-action: manipulation;
+  z-index: 0;
+  height: 100%;
+  margin-right: 0;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 0;
+  outline: none !important;
+  text-decoration: none;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper.game {
+  padding-top: 150%;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper.user {
+  padding-top: 100%;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper.offer {
+  padding-top: 60%;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper.asset {
+  padding-top: 100%;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper.spotlight {
+  height: 280px;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper .thumbnail {
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-shrink: 1;
+  /* flex-direction: column; */
+  flex-grow: 1;
+  z-index: 0;
+}
+
+.item .item-block .item-card .item-card-link .thumbnail-wrapper .thumbnail img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+}
+
+.item .item-block .item-card .item-card-body {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+  flex-grow: 1;
+  color: #1e293b;
+}
+
+.dark .item .item-block .item-card .item-card-body {
+  color: #e2e8f0;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  font-size: 0.7375rem;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content .item-head {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content .item-card-title {
+  display: flex;
+  flex-direction: row;
+  word-break: break-word;
+  margin-bottom: 5px;
+  margin-right: 0.25rem;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content .item-opensource {
+  /* margin-left: auto; */
+  font-size: 0.55rem;
+  font-weight: 700;
+  /* color: #e6ebe8; */
+  border: 1.5px solid #acacac;
+  border-radius: 4px;
+  padding: 1px 2px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content .item-card-description {
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+  margin-bottom: 5px;
+  margin-right: 0.25rem;
+}
+
+.item .item-block .item-card .item-card-body .item-card-content .item-card-title span {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-align: left;
+  max-width: 100%;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1.3333;
+}
+
+.item .item-block .item-card .item-card-body .item-card-action {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.item .item-block .item-card .item-card-body .item-card-action button {
+  font-weight: 600;
+  color: #1a202c;
+  background-color: #edf2f7;
+  margin-bottom: 0.25rem;
+  width: 100%;
+  border-radius: 7px;
+  padding: 8px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.dark .item .item-block .item-card .item-card-body .item-card-action button {
+  color: #f7fafc;
+  background-color: #404040;
+}
+
+.item .item-block .item-card .item-card-body .item-card-action button:hover {
+  background-color: #e2e8f0;
+}
+
+.dark .item .item-block .item-card .item-card-body .item-card-action button:hover {
+  background-color: #4a4a4a;
+}
+
+.item .item-block .item-card .item-hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.item-tag {
+  position: relative;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #e5e5e5;
+  padding: 0.15rem 0.4rem 0.15rem 0.4rem;
+  text-decoration: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all 250ms ease-in-out;
+}
+
+.item-tag:hover {
+  background-color: #dbeafe;
+}
+
+.dark .item-tag {
+  background-color: #404040;
+  color: #e5e7eb;
+}
+.dark .item-tag:hover {
+  background-color: #525252;
+}

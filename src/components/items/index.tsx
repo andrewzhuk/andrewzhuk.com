@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
-import type { PostNode, ProjectNode, GraphQLEdge } from '../types'
-import useDebouncedCallback from '../hooks/useDebouncedCallback'
-import Item from './item'
+import type { PostNode, ProjectNode, GraphQLEdge } from '../../types'
+import useDebouncedCallback from '../../hooks/use-debounced-callback'
+import Item from './../item'
 import classNames from 'classnames'
+import './styles.css'
 
 type ItemsProps =
   | { type: 'post'; items: GraphQLEdge<PostNode>[] }

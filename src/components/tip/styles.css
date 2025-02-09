@@ -1,0 +1,40 @@
+
+.tip-block {
+    display: block;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  .tip-block svg.icon {
+    margin-right: 0.5rem;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  .tip-block p {
+    margin-bottom: 0;
+  }
+  
+  .tip-block p + p {
+    margin-top: 1rem;
+  }
+  
+  .tip-block.info {
+    background-color: #63b3ed10;
+    border: 2px solid #3182ce;
+  }
+  
+  .tip-block.warning {
+    background-color: #f6df5e10;
+    border: 2px solid #eab308;
+  }
+  
+  .tip-block.success {
+    background-color: #4ade8010;
+    border: 2px solid #16a34a;
+  }

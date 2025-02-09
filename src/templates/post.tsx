@@ -1,6 +1,6 @@
 import React, { useEffect, type ReactNode } from 'react'
 import { graphql, Link, type PageProps } from 'gatsby'
-import { GatsbyImage, getImage, getSrc, StaticImage, type IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage, StaticImage, type IGatsbyImageData } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 import TableOfContents from '../components/table-of-contents'
 import generateTableOfContents from '../utils/table-of-contents'
@@ -13,42 +13,32 @@ interface PostData {
   mdx: {
     body: string
     frontmatter: {
+      slug: string
       title: string
       description: string
       tags: string[]
       lang: string
-      thumbnail: {
-        childImageSharp: {
-          gatsbyImageData: IGatsbyImageData
-        }
-      }
+      thumbnail: { childImageSharp: { gatsbyImageData: IGatsbyImageData } }
     }
   }
-  previous: {
-    frontmatter: {
-      title: string
-      slug: string
-      lang: string
-    }
-  } | null
-  next: {
-    frontmatter: {
-      title: string
-      slug: string
-      lang: string
-    }
-  } | null
+  previous: { frontmatter: { title: string; slug: string; lang: string } } | null
+  next: { frontmatter: { title: string; slug: string; lang: string } } | null
 }
 
 interface PageContext {
-  translations: Array<{
-    lang: string
-    slug: string
-  }>
+  translations: Array<{ lang: string; slug: string }>
   currentLang: string
 }
 
-const PostTemplate = ({ data, children, pageContext }: { data: PostData; children: ReactNode; pageContext: PageContext }) => {
+const PostTemplate = ({
+  data,
+  children,
+  pageContext
+}: {
+  data: PostData
+  children: ReactNode
+  pageContext: PageContext
+}) => {
   const { mdx: post, previous, next } = data
   const image = getImage(post.frontmatter.thumbnail)
   const tableOfContents = generateTableOfContents(post.body)
@@ -80,19 +70,15 @@ const PostTemplate = ({ data, children, pageContext }: { data: PostData; childre
         <div className="template-content">
           <div className="template-main">
             {image && (
-              <GatsbyImage
-                image={image}
-                alt={post.frontmatter.title}
-                className="template-image"
-              />
+              <GatsbyImage image={image} alt={post.frontmatter.title} className="template-image" />
             )}
             <div className="article-content">
               <MDXProvider components={shortcodes}>{children}</MDXProvider>
             </div>
           </div>
           <aside className="template-sidebar">
-            <LanguageSwitcher 
-              translations={pageContext.translations} 
+            <LanguageSwitcher
+              translations={pageContext.translations}
               currentLang={post.frontmatter.lang}
             />
             {tableOfContents.length > 0 && (
@@ -107,9 +93,11 @@ const PostTemplate = ({ data, children, pageContext }: { data: PostData; childre
         <nav className="template-navigation">
           {previous && (
             <Link
-              to={previous.frontmatter.lang === 'en'
-                ? `/posts/${previous.frontmatter.slug}`
-                : `/${previous.frontmatter.lang}/posts/${previous.frontmatter.slug}`}
+              to={
+                previous.frontmatter.lang === 'en'
+                  ? `/posts/${previous.frontmatter.slug}`
+                  : `/${previous.frontmatter.lang}/posts/${previous.frontmatter.slug}`
+              }
               className="template-nav-item prev"
               rel="prev"
             >
@@ -119,9 +107,11 @@ const PostTemplate = ({ data, children, pageContext }: { data: PostData; childre
           )}
           {next && (
             <Link
-              to={next.frontmatter.lang === 'en'
-                ? `/posts/${next.frontmatter.slug}`
-                : `/${next.frontmatter.lang}/posts/${next.frontmatter.slug}`}
+              to={
+                next.frontmatter.lang === 'en'
+                  ? `/posts/${next.frontmatter.slug}`
+                  : `/${next.frontmatter.lang}/posts/${next.frontmatter.slug}`
+              }
               className="template-nav-item next"
               rel="next"
             >
@@ -135,16 +125,29 @@ const PostTemplate = ({ data, children, pageContext }: { data: PostData; childre
   )
 }
 
-export const Head = ({ data: { mdx: post } }: PageProps<PostData>) => (
-  <PageHead
-    title={`${post.frontmatter.title} - Blog | Andrew Zhuk`}
-    description={post.frontmatter.description}
-    image={
-      post.frontmatter.thumbnail
-        ? `https://andrewzhuk.com/${post.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
-        : undefined
-    }
-  />
+export const Head = ({ data: { mdx: post }, pageContext }: PageProps<PostData, PageContext>) => (
+  <>
+    <PageHead
+      title={`${post.frontmatter.title} - Blog | Andrew Zhuk`}
+      description={post.frontmatter.description}
+      image={
+        post.frontmatter.thumbnail
+          ? `https://andrewzhuk.com${post.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
+          : undefined
+      }
+      pathname={
+        post.frontmatter.lang === 'en'
+          ? `/posts/${post.frontmatter.slug}`
+          : `/${post.frontmatter.lang}/posts/${post.frontmatter.slug}`
+      }
+    />
+    <link key="canonical" rel="canonical" href={`https://andrewzhuk.com${post.frontmatter.lang === 'en' ? `/posts/${post.frontmatter.slug}` : `/${post.frontmatter.lang}/posts/${post.frontmatter.slug}`}`} />
+    {/* exclude current language */}
+    {pageContext.currentLang && pageContext.translations.filter((translation) => translation.lang !== pageContext.currentLang).map((translation) => (
+      <link key={`alternate-${translation.lang}`} rel="alternate" href={`https://andrewzhuk.com${translation.lang === 'en' ? `/posts/${post.frontmatter.slug}` : `/${translation.lang}/posts/${post.frontmatter.slug}`}`} />
+    ))}
+    <meta key="keywords" name="keywords" content={post.frontmatter.tags.join(', ')} />
+  </>
 )
 
 export const query = graphql`
@@ -152,6 +155,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       body
       frontmatter {
+        slug
         title
         description
         tags
