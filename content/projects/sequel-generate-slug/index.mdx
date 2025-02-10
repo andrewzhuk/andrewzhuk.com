@@ -1,17 +1,17 @@
 ---
-title: "Sequel Generate Slug"
-description: "Sequel Generate Slug is a plugin automatically generates a URL-friendly slug for your Sequel model instances. The plugin supports multi-language slugs, so you can use any language to create slugs for your models. Additionally, if you update the title column of a model instance, the plugin will automatically generate a new slug based on the updated title."
-technologies: ["Ruby", "Sequel"]
-github: "https://github.com/andrewzhuk/sequel-generate-slug"
-thumbnail: "thumbnail.jpg"
-slug: "sequel-generate-slug"
+title: 'Sequel Generate Slug'
+description: 'Sequel Generate Slug is a plugin automatically generates a URL-friendly slug for your Sequel model instances. The plugin supports multi-language slugs, so you can use any language to create slugs for your models. Additionally, if you update the title column of a model instance, the plugin will automatically generate a new slug based on the updated title.'
+technologies: ['Ruby', 'Sequel']
+github: 'https://github.com/andrewzhuk/sequel-generate-slug'
+thumbnail: 'thumbnail.jpg'
+slug: 'sequel-generate-slug'
 opensource: true
 position: 6
 ---
 
-# Sequel Generate Slug: Multilingual URL Slug Generation for Your Sequel Models
+## Sequel Generate Slug: Multilingual URL Slug Generation for Your Sequel Models
 
-## **Hello fellow Rubyists! 🚀**
+## Hello fellow Rubyists! 🚀
 
 Today I’m excited to share my new open-source contribution to the Ruby ecosystem: the Sequel Generate Slug plugin. It solves a common yet critical task—automatically generating human-readable URL slugs for your Sequel models—with a focus on multilingual support and uniqueness.
 
@@ -26,27 +26,27 @@ As a Sequel enthusiast and Ruby lover, I’ve always found a lack of simple, fle
 ### Key Features
 
 ```ruby
-class Post < Sequel::Model  
-  plugin :generate_slug, source: :title, destination: :slug  
+class Post < Sequel::Model
+  plugin :generate_slug, source: :title, destination: :slug
 end
 ```
 
 - **Automation Without Magic**
-Simply specify a source column (e.g., title), and the plugin generates a slug into the target field (:slug by default). When the title updates, the slug refreshes automatically.
+  Simply specify a source column (e.g., title), and the plugin generates a slug into the target field (:slug by default). When the title updates, the slug refreshes automatically.
 
 - **Multilingual by Design**
-Use any language—the plugin handles Unicode seamlessly, converting characters into URL-friendly formats:
+  Use any language—the plugin handles Unicode seamlessly, converting characters into URL-friendly formats:
 
 ```ruby
-post.title = "Доброго вечора ми з України" # => slug: "dobrogho-viechora-mi-z-ukrayini"  
-post.title = "A quoi ressemble le texte en français avec ce plugin?" # => slug: "a-quoi-ressemble-le-texte-en-francais-avec-ce-plugin"  
+post.title = "Доброго вечора ми з України" # => slug: "dobrogho-viechora-mi-z-ukrayini"
+post.title = "A quoi ressemble le texte en français avec ce plugin?" # => slug: "a-quoi-ressemble-le-texte-en-francais-avec-ce-plugin"
 ```
 
 - **Guaranteed Uniqueness**
-If a slug conflicts, it’s appended with a numeric suffix (e.g., post-title-2). Uniqueness checks can even scope to additional columns (e.g., identifier) of the post.
+  If a slug conflicts, it’s appended with a numeric suffix (e.g., post-title-2). Uniqueness checks can even scope to additional columns (e.g., identifier) of the post.
 
 <Tip type="info">
-Take a look at the length of the full URL for SEO purposes is 100 - 120 characters.
+  Take a look at the length of the full URL for SEO purposes is 100 - 120 characters.
 </Tip>
 
 ```ruby

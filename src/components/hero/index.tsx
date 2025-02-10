@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Logos from './assets/logos'
 import Wave from './assets/wave'
+import './styles.css'
 
 interface PositionProps {
   left: string
