@@ -1,5 +1,4 @@
 import React from 'react'
-import GoogleTagManager from './src/components/google-tag-manager'
 
 const HtmlAttributes = {
   lang: 'en'
@@ -10,7 +9,6 @@ const BodyAttributes = {
 }
 
 const PreBodyComponents = [
-  <GoogleTagManager key="google-tag-manager" />
 ]
 
 const HeadComponents = [  
