@@ -2655,10 +2655,10 @@ type CreateBlogPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type CreateBlogPagesQuery = { readonly allMdx: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly frontmatter: { readonly title: string | null, readonly description: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly lang: string | null } | null, readonly internal: { readonly contentFilePath: string | null } } }> } };
 
-type CreateCoursePagesQueryVariables = Exact<{ [key: string]: never; }>;
+type CreateProjectPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type CreateCoursePagesQuery = { readonly allMdx: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly frontmatter: { readonly title: string | null, readonly description: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly lang: string | null } | null, readonly internal: { readonly contentFilePath: string | null } } }> } };
+type CreateProjectPagesQuery = { readonly allMdx: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly frontmatter: { readonly title: string | null, readonly description: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly lang: string | null } | null, readonly internal: { readonly contentFilePath: string | null } } }> } };
 
 
 }

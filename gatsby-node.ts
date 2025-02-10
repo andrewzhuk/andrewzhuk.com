@@ -21,7 +21,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const { createPage } = actions
 
   const postTemplate = path.resolve('./src/templates/post.tsx')
-  const courseTemplate = path.resolve('./src/templates/course.tsx')
+  const projectTemplate = path.resolve('./src/templates/project.tsx')
 
   // Query for blog posts
   const blogResult = await graphql<{ allMdx: { edges: Item[] } }>(`
@@ -102,12 +102,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     })
   }
 
-  // Query for courses
-  const courseResult = await graphql<{ allMdx: { edges: Item[] } }>(`
-    query CreateCoursePages {
+  // Query for projects
+  const projectResult = await graphql<{ allMdx: { edges: Item[] } }>(`
+    query CreateProjectPages {
       allMdx(
         sort: { frontmatter: { position: ASC } }
-        filter: { internal: { contentFilePath: { regex: "/content/courses/" } } }
+        filter: { internal: { contentFilePath: { regex: "/content/projects/" } } }
         limit: 1000
       ) {
         edges {
@@ -129,20 +129,20 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     }
   `)
 
-  if (courseResult.errors) {
-    reporter.panicOnBuild('Error while creating course pages', courseResult.errors)
+  if (projectResult.errors) {
+    reporter.panicOnBuild('Error while creating project pages', projectResult.errors)
     return
   }
 
-  const courses = courseResult.data?.allMdx.edges || []
+  const projects = projectResult.data?.allMdx.edges || []
 
-  if (courses.length > 0) {
-    courses.forEach((course, index) => {
-      const previousCourseId = index === 0 ? null : courses[index - 1].node.id
-      const nextCourseId = index === courses.length - 1 ? null : courses[index + 1].node.id
+  if (projects.length > 0) {
+    projects.forEach((project, index) => {
+      const previousProjectId = index === 0 ? null : projects[index - 1].node.id
+      const nextProjectId = index === projects.length - 1 ? null : projects[index + 1].node.id
 
-      // Find all translations of the current course
-      // const translations = courses.filter(p => 
+      // Find all translations of the current project
+      // const translations = projects.filter(p => 
       //   p.node.frontmatter.slug === course.node.frontmatter.slug && 
       //   p.node.frontmatter.lang !== course.node.frontmatter.lang
       // ).map(t => ({
@@ -156,12 +156,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       //   : `/${course.node.frontmatter.lang}/courses/${course.node.frontmatter.slug}`
 
       createPage({
-        path: `/courses/${course.node.frontmatter.slug}`,
-        component: `${courseTemplate}?__contentFilePath=${course.node.internal.contentFilePath}`,
+        path: `/projects/${project.node.frontmatter.slug}`,
+        component: `${projectTemplate}?__contentFilePath=${project.node.internal.contentFilePath}`,
         context: {
-          id: course.node.id,
-          previousCourseId,
-          nextCourseId,
+          id: project.node.id,
+          previousProjectId,
+          nextProjectId,
           // translations
         }
       })
