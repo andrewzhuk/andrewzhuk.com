@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Items from '../components/items'
 import PageHead from '../components/page-head'
-import { ArrowRightSIcon } from '@remixicons/react/line'
+import ArrowRightSIcon from '@remixicons/react/line/ArrowRightSIcon'
 import type { IndexPageData } from '../types'
 
 const IndexPage = ({ data }: { data: IndexPageData }) => {
@@ -52,6 +52,7 @@ export const Head = () => (
 export const query = graphql`
   query HomePageQuery {
     posts: allMdx(
+      sort: { frontmatter: { date: DESC } }
       limit: 6
       filter: {
         internal: { contentFilePath: { regex: "/content/posts/" } }

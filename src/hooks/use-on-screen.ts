@@ -1,4 +1,4 @@
-import { MutableRefObject, useLayoutEffect, useState } from 'react'
+import { type MutableRefObject, useLayoutEffect, useState } from 'react'
 
 const useOnScreen = <T extends Element>(
   ref: MutableRefObject<T>,

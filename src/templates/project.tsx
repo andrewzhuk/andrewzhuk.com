@@ -6,7 +6,8 @@ import TableOfContents from '../components/table-of-contents'
 import generateTableOfContents from '../utils/table-of-contents'
 import PageHead from '../components/page-head'
 import { MDXProvider } from '@mdx-js/react'
-import { GithubIcon, LinksIcon } from '@remixicons/react/fill'
+import GithubIcon from '@remixicons/react/fill/GithubIcon'
+import LinksIcon from '@remixicons/react/fill/LinksIcon'
 import Tip from '../components/tip'
 interface ProjectData {
   mdx: {

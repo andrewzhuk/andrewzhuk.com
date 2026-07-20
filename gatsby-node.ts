@@ -27,6 +27,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const blogResult = await graphql<{ allMdx: { edges: Item[] } }>(`
     query CreateBlogPages {
       allMdx(
+        sort: { frontmatter: { date: ASC } }
         filter: { internal: { contentFilePath: { regex: "/content/posts/" } } }
       ) {
         edges {

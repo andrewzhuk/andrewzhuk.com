@@ -1,0 +1,41 @@
+---
+title: 'When did we agree to pay with our RAM for the convenience of developing other people’s apps?'
+date: '2026-07-20'
+description: 'A chat app, a task board, and everyday work tools consume gigabytes of RAM. Why does developer convenience come at the expense of users’ resources and time?'
+tags: ['Performance', 'DeveloperTools', 'Electron', 'ProductQuality']
+slug: 'developer-convenience-user-memory'
+thumbnail: 'thumbnail.jpg'
+lang: 'en'
+---
+
+My work toolkit includes Slack, Trello, Figma, Visual Studio Code, and Lens. Discussions, tasks, designs, code, and cluster management. I need all of them at the same time.
+
+Yet every so often, I have to close apps I need just to make my computer respond properly again.
+
+Why the hell should I have to close work apps so I can work?
+
+I’ve experienced freezes on a MacBook M1 with 8 GB of RAM and a Mac mini M4 with 24 GB. When memory runs short and the SSD is almost full, there’s barely any room for swap to grow either.
+
+In Activity Monitor, I’ve personally seen Slack using around 3 GB of memory. Lens was in the same ballpark. At one point, Trello was taking up 7 GB. And don’t even get me started on Visual Studio Code.
+
+Seven gigabytes. A task board. 🤯
+
+Maybe it’s a memory leak. Or maybe there’s a nuclear explosion simulation running behind that task board—it’s hard to explain the appetite otherwise. Even if it’s a bug, the memory being consumed is real. I’m the one dealing with the consequences.
+
+As a developer, I understand the choice of Electron: a familiar web stack, one codebase, no need for a separate team for each OS. Easier maintenance, faster releases across platforms. Benefits for both the team and its users.
+
+But after release, the runtime, processes, and caches are running on my computer. Their resource usage depends on the implementation. The name of the technology doesn’t explain a particular freeze.
+
+So the question remains: why do a chat app and a task board need so much memory? What are those gigabytes doing? Could the same work be done more efficiently?
+
+Every team has its own roadmap. I have one computer. Each app on its own might be considered “fine,” but I have to work with all of them at once. Their demands add up. My hardware doesn’t multiply to match.
+
+Optimization costs engineering time. A new feature is easier to show off in an announcement. And when resource usage goes unattended, users pay the price: waiting, restarting, closing things they need. Then buying more memory.
+
+I eventually left the heavy editor for Zed. Its developers deserve a heartfelt thank-you. Maybe they were fed up with heavy tools too. Having a choice is good. Having to leave an app just to get back to work is bad.
+
+I’m not demanding zero resource usage. I’m demanding that it be treated as part of product quality. An app should still run properly after hours of work, with real data, alongside other tools. Its creators are just as responsible for that as they are for making the buttons work.
+
+I’ve already bought a computer. Buying the next one shouldn’t become a mandatory fix for someone else’s app.
+
+Your development convenience is paid for with my memory and my time. Don’t call it a saving. You’ve simply sent the bill to me.

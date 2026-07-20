@@ -46,7 +46,7 @@ export const Head = () => (
 export const query = graphql`
   query BlogPageQuery {
     posts: allMdx(
-      sort: { frontmatter: { title: ASC } }
+      sort: { frontmatter: { date: DESC } }
       filter: { 
         internal: { contentFilePath: { regex: "/content/posts/" } }
         frontmatter: { lang: { eq: "en" } }

@@ -1,5 +1,7 @@
 import React from 'react'
-import { GithubIcon, LinkedinIcon, TwitterXIcon } from '@remixicons/react/line'
+import GithubIcon from '@remixicons/react/line/GithubIcon'
+import LinkedinIcon from '@remixicons/react/line/LinkedinIcon'
+import TwitterXIcon from '@remixicons/react/line/TwitterXIcon'
 
 const Footer = () => {
   return (

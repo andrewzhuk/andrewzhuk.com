@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { InformationIcon } from '@remixicons/react/line'
+import InformationIcon from '@remixicons/react/line/InformationIcon'
 import React, { type ReactNode } from 'react'
 import './styles.css'
 
