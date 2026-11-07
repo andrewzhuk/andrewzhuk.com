@@ -49,7 +49,7 @@ const Item = ({ type, node }: ItemProps) => {
                   )}
                 </div>
                 <div className="item-card-action">
-                  <button type="button">{isProject ? 'View project' : 'Read more'}</button>
+                  <span>{isProject ? 'View project' : 'Read more'}</span>
                 </div>
               </div>
             </Link>

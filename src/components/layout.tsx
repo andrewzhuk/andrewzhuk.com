@@ -1,23 +1,17 @@
 import React from 'react'
-import Footer from './footer'
 import Navbar from './navbar'
-
-interface LayoutProps {
-  children: React.ReactNode
-}
-
-const Layout = ({ children }: LayoutProps) => {
-  return (
-    <>
-      <div className="layout">
-        <header>
-          <Navbar />
-        </header>
-        <main>{children}</main>
-        <Footer />
-      </div>
-    </>
-  )
-}
-
+import Footer from './footer'
+import '../styles/global.css'
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <div className="layout" id="top">
+    <a className="skip-link" href="#main-content">
+      Skip to content
+    </a>
+    <header>
+      <Navbar />
+    </header>
+    <main id="main-content">{children}</main>
+    <Footer />
+  </div>
+)
 export default Layout

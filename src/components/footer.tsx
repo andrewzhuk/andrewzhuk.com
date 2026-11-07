@@ -1,44 +1,36 @@
 import React from 'react'
-import GithubIcon from '@remixicons/react/line/GithubIcon'
-import LinkedinIcon from '@remixicons/react/line/LinkedinIcon'
-import TwitterXIcon from '@remixicons/react/line/TwitterXIcon'
-
-const Footer = () => {
-  return (
-    <footer>
-      <div className="container">
-        <div>
-          <p>&copy; {new Date().getFullYear()} Andrew Zhuk. All rights reserved.</p>
-        </div>
-        <div className="links">
-          <a
-            title="GitHub"
-            href="https://github.com/andrewzhuk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GithubIcon className="icon" />
-          </a>
-          <a
-            title="LinkedIn"
-            href="https://linkedin.com/in/winhack"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LinkedinIcon className="icon" />
-          </a>
-          <a
-            title="X"
-            href="https://twitter.com/imandrewzhuk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TwitterXIcon className="icon" />
-          </a>
-        </div>
+import { Link } from 'gatsby'
+import { Arrow } from './editorial'
+const Footer = () => (
+  <footer id="contact" className="footer">
+    <div className="footer-top">
+      <span className="micro">Good things start with a conversation.</span>
+      <span className="micro">Founder / Engineer / Builder</span>
+    </div>
+    <a
+      className="footer-title"
+      href="https://www.linkedin.com/in/winhack/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Let’s talk.
+      <Arrow />
+    </a>
+    <div className="footer-bottom">
+      <Link to="/">© {new Date().getFullYear()} Andrew Zhuk</Link>
+      <div>
+        <a href="https://www.linkedin.com/in/winhack/" target="_blank" rel="noreferrer">
+          LinkedIn <Arrow />
+        </a>
+        <a href="https://github.com/andrewzhuk" target="_blank" rel="noreferrer">
+          GitHub <Arrow />
+        </a>
+        <a href="https://atlarius.com" target="_blank" rel="noreferrer">
+          Atlarius <Arrow />
+        </a>
       </div>
-    </footer>
-  )
-}
-
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+)
 export default Footer

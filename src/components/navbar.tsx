@@ -1,38 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-
+import { Arrow } from './editorial'
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
   return (
-    <nav className="nav">
-      <div className="nav-container">
-        <Link to="/" className="nav-brand">
-          <StaticImage
-            className="nav-logo"
-            src="../images/me.jpeg"
-            alt="Andrew Zhuk"
-            placeholder="blurred"
-            layout="fixed"
-            width={50}
-            height={50}
-            style={{ borderRadius: '50%' }}
-          />
-          <span className="nav-name">Andrew Zhuk</span>
+    <nav className="nav" aria-label="Main navigation">
+      <Link to="/" className="wordmark" aria-label="Andrew Zhuk home">
+        <img className="personal-mark" src="/images/editorial/andrew-zhuk-mark.svg" width="44" height="44" alt="" aria-hidden="true" />
+        <div>Andrew Zhuk<span>Independent mind. Hands-on builder.</span></div>
+      </Link>
+      <button
+        type="button"
+        className="menu-toggle"
+        aria-controls="navigation"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        {open ? 'Close' : 'Menu'}
+      </button>
+      <div id="navigation" className={`nav-links ${open ? 'open' : ''}`}>
+        <Link to="/about/" activeClassName="active" onClick={() => setOpen(false)}>
+          About
         </Link>
-        <div className="nav-links">
-          <Link to="/posts" className="nav-link" activeClassName="active">
-            Blog
-          </Link>
-          <Link to="/projects" className="nav-link" activeClassName="active">
-            Projects
-          </Link>
-          <Link to="/about" className="nav-link" activeClassName="active">
-            About
-          </Link>
-        </div>
+        <Link
+          to="/projects/"
+          partiallyActive
+          activeClassName="active"
+          onClick={() => setOpen(false)}
+        >
+          Work
+        </Link>
+        <Link to="/posts/" partiallyActive activeClassName="active" onClick={() => setOpen(false)}>
+          Journal
+        </Link>
+        <a className="nav-cta" href="#contact" onClick={() => setOpen(false)}>
+          Let’s talk <Arrow />
+        </a>
       </div>
     </nav>
   )
 }
-
 export default Navbar

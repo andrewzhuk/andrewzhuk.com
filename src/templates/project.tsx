@@ -44,7 +44,7 @@ const ProjectTemplate = ({ data, children }: { data: ProjectData; children: Reac
   const { mdx: project, previous, next } = data
   const image = getImage(project.frontmatter.thumbnail)
   const tableOfContents = generateTableOfContents(project.body)
-  console.log('data', data)
+
 
   const shortcodes = { Link, StaticImage, Tip } // Provide common components here
 
@@ -64,14 +64,16 @@ const ProjectTemplate = ({ data, children }: { data: ProjectData; children: Reac
     <Layout>
       <article className="template-container">
         <div className="template-header">
+          <Link className="article-back" to="/projects/">All work</Link>
           <h1 className="template-title">{project.frontmatter.title}</h1>
+          <p className="template-description">{project.frontmatter.description}</p>
           <div className="template-meta">
             <span>{project.frontmatter.technologies.join(' • ')}</span>
           </div>
         </div>
 
         <div className="template-content">
-          <main className="template-main">
+          <div className="template-main">
             {image && (
               <div className="template-image">
                 <GatsbyImage image={image} alt={project.frontmatter.title} />
@@ -97,14 +99,14 @@ const ProjectTemplate = ({ data, children }: { data: ProjectData; children: Reac
                   rel="noopener noreferrer"
                 >
                   <LinksIcon className="icon" />
-                  Live Demo
+                  Website
                 </a>
               )}
             </div>
             <div className="article-content">
               <MDXProvider components={shortcodes}>{children}</MDXProvider>
             </div>
-          </main>
+          </div>
           <aside className="template-sidebar">
             {tableOfContents.length > 0 && (
               <div className="table-of-contents">
@@ -151,7 +153,7 @@ export const Head = ({ data: { mdx: project } }: PageProps<ProjectData>) => (
       description={project.frontmatter.description}
       image={
         project.frontmatter.thumbnail
-          ? `https://andrewzhuk.com/${project.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
+          ? `https://andrewzhuk.com${project.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
           : undefined
       }
     />

@@ -38,5 +38,4 @@ export interface Post {
   
   export interface IndexPageData {
     posts: GraphQLConnection<PostNode>
-    projects: GraphQLConnection<ProjectNode>
   }

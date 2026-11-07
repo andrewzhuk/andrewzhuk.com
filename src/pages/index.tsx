@@ -2,53 +2,66 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import Items from '../components/items'
 import PageHead from '../components/page-head'
-import ArrowRightSIcon from '@remixicons/react/line/ArrowRightSIcon'
+import { Arrow, SectionLabel, AtlariusTile, WritingRow } from '../components/editorial'
 import type { IndexPageData } from '../types'
-
-const IndexPage = ({ data }: { data: IndexPageData }) => {
-  return (
-    <Layout>
-      {/* Hero Section */}
-      <Hero />
-
-      {/* Latest Projects Section */}
-      <section className="latest-items">
-        <div className="head">
-          <div className="title">Latest Projects</div>
-          <Link to="/projects" className="link">
-            View all projects
-            <ArrowRightSIcon className="icon" />
-          </Link>
+const IndexPage = ({ data }: { data: IndexPageData }) => (
+  <Layout>
+    <Hero />
+    <section className="intro-section">
+      <SectionLabel number="01">A little context</SectionLabel>
+      <div>
+        <h2>
+          I connect the dots between
+          <br />
+          an idea and the real world.
+        </h2>
+        <div className="intro-details">
+          <p>
+            Product thinking, software engineering, and the systems underneath. I like understanding
+            the whole picture — and getting my hands into the details.
+          </p>
+          <p>
+            Today, that energy goes into{' '}
+            <Link to="/projects/atlarius/" className="inline-link">
+              Atlarius
+            </Link>
+            : a native workspace for teams. This is a collection of what I’m building, what I’ve
+            learned, and what’s on my mind.
+          </p>
         </div>
-        <Items type="project" items={data.projects.edges} />
-      </section>
-
-      {/* Latest Posts Section */}
-      <section className="latest-items">
-        <div className="head">
-          <div className="title">Latest Posts</div>
-          <Link to="/posts" className="link">
-            View all posts
-            <ArrowRightSIcon className="icon" />
-          </Link>
-        </div>
-        <Items type="post" items={data.posts.edges} />
-      </section>
-    </Layout>
-  )
-}
-
-export const Head = () => (
-  <>
-    <PageHead
-      title="Andrew Zhuk - Full Stack Developer"
-      description="Personal website and blog of Andrew Zhuk, Full Stack Developer specializing in web development and blockchain technologies."
-    />
-  </>
+      </div>
+    </section>
+    <section className="work-section" id="selected-work">
+      <div className="section-heading">
+        <SectionLabel number="02">Current project</SectionLabel>
+      </div>
+      <h2 className="display-heading">What I’m building</h2>
+      <AtlariusTile />
+    </section>
+    <section className="journal-section">
+      <div className="section-heading">
+        <SectionLabel number="03">The journal</SectionLabel>
+        <Link className="underlined" to="/posts/">
+          All writing <Arrow />
+        </Link>
+      </div>
+      <h2 className="display-heading">Thinking out loud.</h2>
+      <div className="writing-list">
+        {data.posts.edges.map(({ node }, i) => (
+          <WritingRow node={node} index={i} key={node.frontmatter.slug} />
+        ))}
+      </div>
+    </section>
+  </Layout>
 )
-
+export const Head = () => (
+  <PageHead
+    title="Andrew Zhuk — Founder & Software Architect"
+    pathname="/"
+    description="Founder of Atlarius. Software and systems architect. Building products, connecting ideas, and sharing notes from the work."
+  />
+)
 export const query = graphql`
   query HomePageQuery {
     posts: allMdx(
@@ -67,28 +80,6 @@ export const query = graphql`
             description
             slug
             tags
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 800)
-              }
-            }
-          }
-        }
-      }
-    }
-    projects: allMdx(
-      sort: { frontmatter: { position: ASC } }
-      limit: 6
-      filter: { internal: { contentFilePath: { regex: "/content/projects/" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            description
-            slug
-            opensource
             thumbnail {
               childImageSharp {
                 gatsbyImageData(width: 800)

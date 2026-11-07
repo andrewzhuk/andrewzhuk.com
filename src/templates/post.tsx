@@ -61,6 +61,7 @@ const PostTemplate = ({
     <Layout>
       <article className="template-container">
         <div className="template-header">
+          <Link className="article-back" to="/posts/">Journal</Link>
           <h1 className="template-title">{post.frontmatter.title}</h1>
           <div className="template-meta">
             <span>{post.frontmatter.tags.join(' • ')}</span>
@@ -141,10 +142,10 @@ export const Head = ({ data: { mdx: post }, pageContext }: PageProps<PostData, P
           : `/${post.frontmatter.lang}/posts/${post.frontmatter.slug}`
       }
     />
-    <link key="canonical" rel="canonical" href={`https://andrewzhuk.com${post.frontmatter.lang === 'en' ? `/posts/${post.frontmatter.slug}` : `/${post.frontmatter.lang}/posts/${post.frontmatter.slug}`}`} />
+
     {/* exclude current language */}
     {pageContext.currentLang && pageContext.translations.filter((translation) => translation.lang !== pageContext.currentLang).map((translation) => (
-      <link key={`alternate-${translation.lang}`} rel="alternate" href={`https://andrewzhuk.com${translation.lang === 'en' ? `/posts/${post.frontmatter.slug}` : `/${translation.lang}/posts/${post.frontmatter.slug}`}`} />
+      <link key={`alternate-${translation.lang}`} rel="alternate" hrefLang={translation.lang} href={`https://andrewzhuk.com${translation.lang === 'en' ? `/posts/${post.frontmatter.slug}` : `/${translation.lang}/posts/${post.frontmatter.slug}`}`} />
     ))}
     <meta key="keywords" name="keywords" content={post.frontmatter.tags.join(', ')} />
   </>

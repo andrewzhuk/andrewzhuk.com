@@ -1,78 +1,114 @@
 import React from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import PageHead from '../components/page-head'
-const AboutPage = () => {
-  return (
-    <Layout>
-      <div className="about-container">
-        <div className="about-grid">
-          <div className="about-image-container">
-            <StaticImage
-              src="../images/profile.jpeg"
-              alt="Andrew Zhuk"
-              className="rounded-lg"
-              objectFit="cover"
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </div>
-
-          <div className="about-content">
-            <h1 className="about-header">
-              I'm Andrew Zhuk. I live in Kyiv Ukraine & Valencia Spain, where I build the
-              future.
-            </h1>
-            <p className="about-text">
-              I'm a developer who happily works on both backend and frontend. As a seasoned
-              engineer, I began my journey in IT back when people were just getting used to the idea
-              that Windows wasn’t just a program but almost a full-fledged operating system. Since
-              then, I’ve seen a lot, and technology continues to bring me joy every day, with some
-              things pleasantly surprising me.
-            </p>
-
-            <p className="about-text">
-              I love creating cool projects and experimenting with startup ideas. I live between
-              lines of code, a cup of coffee, and a generous dose of good vibes. When I'm not
-              immersed in the world of development, you can find me taking a walk or hanging out
-              with friends, discussing the latest tech news. I believe that even an error in the
-              code can be a reason to smile – because every problem hides a new solution.
-            </p>
-
-            <p className="about-text">
-              On this page, I share my projects, ideas, and amusing stories from the world of IT.
-              Let's make the digital world a little more interesting together!
-            </p>
-
-            <div className="about-skills">
-              <h2 className="about-skills-title">Skills</h2>
-              <div className="skills-list">
-                <div className="skill-item">Frontend: React, Next, Gatsby, Vue, Nuxt</div>
-                <div className="skill-item">
-                  Backend: Node.js, Express, NestJS, Ruby, Roda, Rust, Actix Web
-                </div>
-                <div className="skill-item">
-                  Blockchain: Solidity, Web3.js, Solana, Truffle, Hardhat
-                </div>
-                <div className="skill-item">
-                  DevOps: Docker, Kubernetes, GitHub Actions, GitLab CI, Terraform
-                </div>
-              </div>
-            </div>
-          </div>
+import { SectionLabel, Arrow } from '../components/editorial'
+const AboutPage = () => (
+  <Layout>
+    <div className="page-heading">
+      <SectionLabel number="01">The person behind the work</SectionLabel>
+      <h1>
+        Curiosity.
+        <br />
+        <span className="serif">Then code.</span>
+      </h1>
+    </div>
+    <section className="about-story">
+      <div className="about-photo">
+        <img
+          src="/images/editorial/andrew-approved.webp"
+          alt="Andrew Zhuk"
+          width="1402"
+          height="1122"
+        />
+        <span className="micro">Andrew Zhuk / Founder & engineer</span>
+      </div>
+      <div className="about-biography">
+        <span className="micro">A little about me</span>
+        <h2>
+          I like turning
+          <br />
+          “what if” into
+          <br />
+          <span className="serif">something real.</span>
+        </h2>
+        <p>
+          I’m Andrew, a software engineer, systems architect, and founder of Atlarius. I’ve spent
+          more than 15 years building software and understanding what makes products work — from the
+          interface to the infrastructure.
+        </p>
+        <p>
+          I’m happiest when I can connect the product idea with the engineering behind it.
+          Understanding a problem, making the trade-offs, building the system, and learning from
+          what happens next.
+        </p>
+        <p>
+          Atlarius is where those interests meet today: a native workspace for teams, bringing tools
+          and conversations closer to the work itself.
+        </p>
+        <Link className="underlined" to="/projects/atlarius/">
+          What I’m building <Arrow />
+        </Link>
+      </div>
+    </section>
+    <section className="approach-section">
+      <SectionLabel number="02">How I work</SectionLabel>
+      <div className="approach-list">
+        <div>
+          <span>01</span>
+          <h3>See the whole picture.</h3>
+          <p>
+            The product, the people, the architecture, and the cost of running it. The connections
+            matter.
+          </p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>Stay close to the details.</h3>
+          <p>
+            I work hands-on across frontend, backend, and infrastructure. Good decisions need an
+            understanding of the actual system.
+          </p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Care about what lasts.</h3>
+          <p>
+            Performance, maintainability, and resource use are part of the experience. Quality
+            continues long after release.
+          </p>
         </div>
       </div>
-    </Layout>
-  )
-}
-
+    </section>
+    <section className="technical-section">
+      <SectionLabel number="03">My toolkit</SectionLabel>
+      <h2>
+        Different layers.
+        <br />
+        One connected system.
+      </h2>
+      <div className="toolkit">
+        <div>
+          <h3>Interfaces</h3>
+          <p>React · Next.js · Gatsby · Vue</p>
+        </div>
+        <div>
+          <h3>Applications & data</h3>
+          <p>Rust · Node.js · Ruby · PostgreSQL</p>
+        </div>
+        <div>
+          <h3>Infrastructure</h3>
+          <p>Kubernetes · Docker · Terraform · CI/CD</p>
+        </div>
+      </div>
+    </section>
+  </Layout>
+)
 export default AboutPage
-
 export const Head = () => (
-  <>
-    <PageHead
-      title="About Me | Andrew Zhuk"
-      description="Learn more about Andrew Zhuk - Full Stack Developer specializing in web development and blockchain technologies."
-    />
-  </>
+  <PageHead
+    title="About — Andrew Zhuk"
+    pathname="/about/"
+    description="Andrew Zhuk, founder of Atlarius and software architect with over 15 years of hands-on engineering experience."
+  />
 )

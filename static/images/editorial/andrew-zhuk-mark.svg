@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <defs>
+    <path id="space" d="M440 165C440 90 398 67 345 94C300 115 216 143 241 195L420 403V468H345L177 272C139 224 104 264 83 335C48 452 44 601 91 691C117 741 145 713 180 674L345 500H420V557L247 760C209 807 276 856 342 892C396 922 440 912 440 838Z"/>
+    <mask id="cutouts">
+      <rect width="1000" height="1000" fill="white"/>
+      <use href="#space" fill="black"/>
+      <use href="#space" transform="translate(1000 0) scale(-1 1)" fill="black"/>
+    </mask>
+  </defs>
+  <circle cx="500" cy="500" r="490" fill="black" mask="url(#cutouts)"/>
+</svg>

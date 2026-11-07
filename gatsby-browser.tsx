@@ -1,5 +1,5 @@
 import './src/styles/global.css'
-import 'prismjs/themes/prism-tomorrow.css'
+
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { type GatsbyBrowser } from 'gatsby'
