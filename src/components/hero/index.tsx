@@ -3,30 +3,25 @@ import { Link } from 'gatsby'
 import { Arrow } from '../editorial'
 const Hero = () => (
   <section className="hero" aria-label="Introduction">
-    <div className="hero-rail">
+    <div className="hero-rail" aria-hidden="true">
       <span>Personal website</span>
-      <span>Product. People. Possibilities.</span>
     </div>
     <div className="hero-intro">
-      <div className="hero-facts">
-        <div>
-          <strong>15+</strong>
-          <span>Years in engineering</span>
-        </div>
-        <div>
-          <strong aria-label="From zero to one">
-            0<span className="fact-arrow" aria-hidden="true">→</span>1
-          </strong>
-          <span>Ideas into products</span>
-        </div>
+      <div className="hero-experience">
+        <strong>15+</strong>
+        <span>Years in software engineering</span>
       </div>
       <h1>
         Hello<span>.</span>
       </h1>
       <p className="hero-subtitle">
-        I’m Andrew — a founder
-        <br />
-        who builds.
+        I’m Andrew Zhuk, founder of Atlarius and a software architect.
+      </p>
+      <p className="hero-approach">
+        I’ve spent my career building startups, as a founder and as a CTO.
+      </p>
+      <p className="hero-skills">
+        Rapid prototyping · Systems architecture · Distributed systems
       </p>
       <Link className="underlined" to="/about/">
         A little about me <Arrow />
@@ -45,7 +40,6 @@ const Hero = () => (
       <a href="#selected-work">
         Discover my work <span aria-hidden="true">↓</span>
       </a>
-      <span>Software & systems architecture</span>
     </div>
   </section>
 )

@@ -215,8 +215,7 @@ a:hover .arrow {
 }
 .hero {
   position: relative;
-  height: min(760px, calc(100svh - 112px));
-  min-height: 620px;
+  min-height: clamp(620px, calc(100svh - 112px), 760px);
   isolation: isolate;
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -245,12 +244,10 @@ a:hover .arrow {
 .hero-intro a {
   pointer-events: auto;
 }
-.hero-facts {
-  display: flex;
-  gap: 64px;
-  margin-bottom: 30px;
+.hero-experience {
+  margin-bottom: 22px;
 }
-.hero-facts strong {
+.hero-experience strong {
   display: block;
   font-family: Georgia, serif;
   font-style: italic;
@@ -259,28 +256,19 @@ a:hover .arrow {
   letter-spacing: -0.075em;
   font-weight: 400;
 }
-.hero-facts .fact-arrow {
-  display: inline;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 0.45em;
-  vertical-align: 0.15em;
-  margin: 0 0.1em;
-}
-.hero-facts > div > span {
+.hero-experience > span {
   font-size: 11px;
   color: var(--muted);
   display: block;
   margin-top: 8px;
 }
 .hero h1 {
-  font-size: clamp(130px, 15.8vw, 232px);
+  font-size: clamp(120px, 13vw, 200px);
   line-height: 0.93;
   letter-spacing: -0.09em;
   font-weight: 300;
   margin-left: -12px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .hero h1 > span {
   font-family: Georgia, serif;
@@ -288,9 +276,23 @@ a:hover .arrow {
   font-size: 0.8em;
 }
 .hero-subtitle {
-  font-size: clamp(20px, 2.1vw, 29px);
+  max-width: 415px;
+  font-size: clamp(20px, 1.9vw, 27px);
   line-height: 1.32;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
+  margin-bottom: 12px;
+}
+.hero-approach {
+  max-width: 390px;
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.hero-skills {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
   margin-bottom: 22px;
 }
 .hero-portrait {
@@ -359,6 +361,26 @@ a:hover .arrow {
 }
 .intro-details p {
   max-width: 350px;
+}
+.intro-details p + p {
+  margin-top: 12px;
+}
+.intro-details h3 {
+  color: var(--ink);
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.experience-stack {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+.experience-stack dt {
+  color: var(--ink);
+  font-weight: 600;
+}
+.experience-stack dd {
+  margin: 2px 0 0;
 }
 .work-section,
 .journal-section {
@@ -1024,16 +1046,10 @@ a:hover .arrow {
 }
 @media (min-width: 1600px) {
   .hero {
-    height: 780px;
+    min-height: 780px;
   }
   .hero-intro {
     padding-top: 65px;
-  }
-  .hero-facts {
-    margin-bottom: 50px;
-  }
-  .hero h1 {
-    font-size: 245px;
   }
 }
 @media (max-width: 1100px) {
@@ -1043,21 +1059,17 @@ a:hover .arrow {
     width: calc(100% - 72px);
   }
   .hero {
-    height: 650px;
-    min-height: 600px;
+    min-height: 650px;
   }
   .hero-intro {
     padding-left: 48px;
-  }
-  .hero-facts {
-    gap: 30px;
   }
   .hero-portrait {
     width: 58%;
     right: 0;
   }
   .hero h1 {
-    font-size: 175px;
+    font-size: clamp(112px, 15vw, 160px);
   }
   .hero-subtitle {
     font-size: 24px;
@@ -1158,9 +1170,7 @@ a:hover .arrow {
     display: none;
   }
   .hero {
-    min-height: 665px;
-    height: calc(100svh - 86px);
-    max-height: 800px;
+    min-height: 0;
   }
   .hero-rail {
     display: none;
@@ -1169,15 +1179,14 @@ a:hover .arrow {
     padding: 25px 0 0 4px;
     width: 100%;
   }
-  .hero-facts {
-    gap: 32px;
-    margin-bottom: 28px;
+  .hero-experience {
+    margin-bottom: 18px;
   }
-  .hero-facts strong {
+  .hero-experience strong {
     font-size: 48px;
   }
-  .hero-facts > div > span {
-    font-size: 9px;
+  .hero-experience > span {
+    font-size: 11px;
     margin-top: 3px;
   }
   .hero h1 {
@@ -1189,7 +1198,7 @@ a:hover .arrow {
   .hero-subtitle {
     font-size: 21px;
     line-height: 1.28;
-    max-width: 205px;
+    max-width: 350px;
   }
   .hero-intro .underlined {
     font-size: 12px;
@@ -1197,19 +1206,18 @@ a:hover .arrow {
     margin-top: 0;
   }
   .hero-portrait {
+    position: relative;
+    display: block;
     width: 100%;
+    max-width: 500px;
     height: auto;
-    right: 0;
-    bottom: 52px;
-    object-position: center bottom;
-    z-index: 0;
+    bottom: auto;
+    margin: 18px auto 0;
   }
   .hero-bottom {
+    position: relative;
     height: 52px;
     font-size: 9px;
-  }
-  .hero-bottom > span:last-child {
-    display: none;
   }
   .hero-bottom > a {
     gap: 12px;
@@ -1224,9 +1232,6 @@ a:hover .arrow {
   .intro-section h2 {
     font-size: 30px;
     line-height: 1.2;
-  }
-  .intro-section h2 br {
-    display: none;
   }
   .intro-details {
     grid-template-columns: 1fr;
@@ -1564,15 +1569,8 @@ a:hover .arrow {
   }
 }
 @media (max-width: 390px) {
-  .hero {
-    min-height: 650px;
-  }
   .hero h1 {
     font-size: 114px;
-  }
-  .hero-portrait {
-    right: 0;
-    height: auto;
   }
   .hero-subtitle {
     font-size: 20px;

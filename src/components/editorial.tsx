@@ -62,8 +62,8 @@ export const AtlariusTile = () => (
       <span className="micro">Current focus / Founder & CEO</span>
       <h3>Atlarius</h3>
       <p>
-        A native workspace.
-        <br />A more connected way to work.
+        A native Mac workspace where technical teams can work with infrastructure and talk
+        to each other in the same app.
       </p>
       <Link className="underlined" to="/projects/atlarius/">
         Explore the project <Arrow />

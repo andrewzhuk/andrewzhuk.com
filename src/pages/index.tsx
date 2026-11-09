@@ -9,26 +9,46 @@ const IndexPage = ({ data }: { data: IndexPageData }) => (
   <Layout>
     <Hero />
     <section className="intro-section">
-      <SectionLabel number="01">A little context</SectionLabel>
+      <SectionLabel number="01">Experience</SectionLabel>
       <div>
-        <h2>
-          I connect the dots between
-          <br />
-          an idea and the real world.
-        </h2>
+        <h2>Give me a startup idea and I’ll play the business forward in my head.</h2>
         <div className="intro-details">
-          <p>
-            Product thinking, software engineering, and the systems underneath. I like understanding
-            the whole picture — and getting my hands into the details.
-          </p>
-          <p>
-            Today, that energy goes into{' '}
-            <Link to="/projects/atlarius/" className="inline-link">
-              Atlarius
-            </Link>
-            : a native workspace for teams. This is a collection of what I’m building, what I’ve
-            learned, and what’s on my mind.
-          </p>
+          <div>
+            <p>
+              Who pays first? Why would that customer switch to our product? Where do we find
+              the next hundred customers? And if things go well, how much will it cost us to
+              serve each new customer?
+            </p>
+            <p>
+              I learned to think this way by building startups. I launched my first startup in
+              2008. I turned twenty that same year. Since then, I’ve built ventures of my own and
+              led engineering as CTO for other founders.
+            </p>
+            <p>
+              I’m a software architect. Building startups meant learning to read the numbers,
+              develop an eye for what makes a product feel right, and decide where the team
+              should spend the next few months. That experience changed how I design software.
+              I think about how customers will use it and whether the company can build, sell,
+              and support it. Today, I make those decisions at Atlarius.
+            </p>
+          </div>
+          <div>
+            <h3>Technologies I work with</h3>
+            <dl className="experience-stack">
+              <div>
+                <dt>Web</dt>
+                <dd>TypeScript, React, Next.js</dd>
+              </div>
+              <div>
+                <dt>Backend & data</dt>
+                <dd>Rust, Node.js, Ruby, PostgreSQL</dd>
+              </div>
+              <div>
+                <dt>Infrastructure</dt>
+                <dd>Docker, Kubernetes, Terraform, CI/CD</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
@@ -59,7 +79,7 @@ export const Head = () => (
   <PageHead
     title="Andrew Zhuk — Founder & Software Architect"
     pathname="/"
-    description="Founder of Atlarius. Software and systems architect. Building products, connecting ideas, and sharing notes from the work."
+    description="Founder of Atlarius and hands-on software architect with 15+ years in engineering. Building startups since 2008 as a founder and CTO."
   />
 )
 export const query = graphql`
